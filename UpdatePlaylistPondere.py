@@ -4,8 +4,8 @@ import datetime
 
 # Configuration de l'authentification
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
-    client_id='c6fc92f83df140619ed25edf460e642b',
-    client_secret='a6e8c5477f8c40c6bb8399603664b148',
+    client_id='YOUR_CLIENT_ID',
+    client_secret='YOUR_CLIENT_SECRET',
     redirect_uri='http://localhost:8888/callback',
     scope='playlist-read-private playlist-modify-private'
 ))
@@ -53,7 +53,7 @@ def update_weighted_playlist(tracks, playlist_id):
     
     # Effacer les pistes existantes de la playlist
     sp.playlist_replace_items(playlist_id, [])
-    print("Suppression des musqiues actuelles")
+    print("Suppression des musiques actuelles")
     
     # Diviser les track_ids en lots de 100
     for chunk in chunked_list(track_ids, 100):
@@ -61,8 +61,8 @@ def update_weighted_playlist(tracks, playlist_id):
         sp.playlist_add_items(playlist_id, chunk)
 
 # ID de la playlist d'origine et de la playlist pondérée
-original_playlist_id = '6u7lWmNehQJQll0tq3n7eP'  # ID de la playlist d'origine
-weighted_playlist_id = '4oVVWl0XAuTymHN1n6oV8N'  # ID de la playlist à laquelle on veut ajouter les musiques pondérées
+original_playlist_id = 'YOUR_ORIGINAL_PLAYLIST_ID'
+weighted_playlist_id = 'YOUR_WEIGHTED_PLAYLIST_ID'
 
 # Obtention et pondération des pistes
 tracks = get_playlist_tracks(original_playlist_id)
